@@ -15,9 +15,9 @@ all_tweets = []
 url = 'https://twitter.com/TheOnion'
 response = requests.get(url)
 content = BeautifulSoup(response.text, "html.parser")
-timeline = url.select('#timeline li.stream-item')
+timeline = content.select('#timeline li.stream-item')
 for tweet in timeline:
 	tweet_id = tweet['data-item-id']
 	tweet_text = tweet.select('p.tweet-text')[0].get_text()
-	all_tweets.append({"id": tweet_id, "text": teet_text})
+	all_tweets.append({"id": tweet_id, "text": tweet_text})
 	print(all_tweets)
